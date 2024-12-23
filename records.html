@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Records{% endblock %}
+
+{% block content %}
+    <h2>Patient Records</h2>
+    <div id="patient-records"></div>
+
+    <h2>Donor Records</h2>
+    <div id="donor-records"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const patientRecords = JSON.parse(localStorage.getItem('patients')) || [];
+            const donorRecords = JSON.parse(localStorage.getItem('donors')) || [];
+
+            const patientRecordsDiv = document.getElementById('patient-records');
+            const donorRecordsDiv = document.getElementById('donor-records');
+
+            if (patientRecords.length === 0) {
+                patientRecordsDiv.innerHTML = '<p>No patient records found.</p>';
+            } else {
+                const patientTable = document.createElement('table');
+                patientTable.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Birthday</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Organ Needed</th>
+                            <th>Health Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                `;
+                patientRecords.forEach(record => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${record.name}</td>
+                        <td>${record.gender}</td>
+                        <td>${record.birthday}</td>
+                        <td>${record.email}</td>
+                        <td>${record.phone}</td>
+                        <td>${record.address}</td>
+                        <td>${record.organ_needed}</td>
+                        <td>${record.health_status}</td>
+                    `;
+                    patientTable.querySelector('tbody').appendChild(row);
+                });
+                patientRecordsDiv.appendChild(patientTable);
+            }
+
+            if (donorRecords.length === 0) {
+                donorRecordsDiv.innerHTML = '<p>No donor records found.</p>';
+            } else {
+                const donorTable = document.createElement('table');
+                donorTable.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Blood Type</th>
+                            <th>Organ Donated</th>
+                            <th>Contact Info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                `;
+                donorRecords.forEach(record => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${record.name}</td>
+                        <td>${record.blood_type}</td>
+                        <td>${record.organ_donated}</td>
+                        <td>${record.contact_info}</td>
+                    `;
+                    donorTable.querySelector('tbody').appendChild(row);
+                });
+                donorRecordsDiv.appendChild(donorTable);
+            }
+        });
+    </script>
+{% endblock %}

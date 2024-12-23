@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <img src="https://static.vecteezy.com/system/resources/previews/009/365/251/non_2x/national-organ-donor-day-with-kidneys-vector.jpg" alt="Organ donation awareness image">
+        <button class="edit-profile">Edit Profile</button>
+    </div>
+    
+    <div class="profile-section">
+        <div class="profile-info">
+            <img src="https://th.bing.com/th/id/R.5818fb5f9042afba1ecca102b1a89ff5?rik=cUhw3gWg7jJdVg&pid=ImgRaw&r=0" alt="Profile picture of {{ user.name }}">
+            <h2 id="userName">{{ user.name }}</h2>
+            <p>Description:</p>
+            <p>{{ user.description or 'No description available.' }}</p>
+            <button>Send Message</button>
+        </div>
+        
+        <div class="profile-details">
+            <div class="details">
+                <div>
+                    <p>ID: {{ user.id }}</p>
+                </div>
+                <div>
+                    <p>Status: {{ user.status }}</p>
+                </div>
+            </div>
+            
+            <div class="details">
+                <div>
+                    <p>Email: <span id="userEmail">{{ user.email }}</span></p>
+                </div>
+                <div>
+                    <p>Password: {{ user.password }}</p>
+                </div>
+            </div>
+            
+            <div class="details">
+                <div>
+                    <p>Phone: <span id="userPhone">{{ user.phoneNumbers | join(', ') }}</span></p>
+                </div>
+                <div>
+                    <p>Another Phone: {{ user.anotherPhone or 'Not provided' }}</p> <!-- Default message if anotherPhone is missing -->
+                </div>
+            </div>
+            
+            <div class="details">
+                <div>
+                    <p>Date of Birth: {{ user.dob }}</p>
+                </div>
+                <div>
+                    <p>Address: <span id="userAddress">{{ user.address or 'Address not provided' }}</span></p> <!-- Default message if address is missing -->
+                </div>
+            </div>
+            
+            <button class="edit-info">Edit Information</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('DOM fully loaded and parsed');
+
+        // Function to display data from local storage
+        function displayData() {
+            const storedData = localStorage.getItem('patientData');
+            if (storedData) {
+                const userData = JSON.parse(storedData);
+                console.log('User Data from Local Storage:', userData);
+                // Display data on the page
+                document.getElementById('userName').textContent = userData.name;
+                document.getElementById('userEmail').textContent = userData.email;
+                document.getElementById('userPhone').textContent = userData.phone;
+                document.getElementById('userAddress').textContent = userData.address;
+                document.getElementById('userDob').textContent = userData.birthday;
+                document.getElementById('userStatus').textContent = 'Patient';
+                document.getElementById('userDescription').textContent = userData.health_status;
+            } else {
+                console.log('No user data found in local storage. Redirecting to registration page.');
+                window.location.href = '/register';
+            }
+        }
+
+        // Call the function to display data
+        displayData();
+    });
+</script>
+{% endblock %}
