@@ -1,0 +1,176 @@
+/* General styles for the Register page */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+.register-page * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.register-page {
+  background-color: #2d8d2f;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+}
+
+.register-page:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.register-page .container {
+  background-color: #fff;
+  color: #333;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  width: 787px;
+  max-width: 100%;
+  min-height: 543px;
+}
+
+.register-page .container p {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  margin: 20px 0;
+  color: #333;
+}
+
+.register-page .container a {
+  color: #333;
+  font-size: 13px;
+  text-decoration: none;
+  margin: 15px 10px;
+}
+
+.register-page .container button {
+  background-color:#2d8d2f;
+  color: #fff;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.6s ease-in-out;
+}
+
+.register-page .container button:hover {
+  background-color: rgb(0, 0, 0);
+  transform: scale(1.1, 1.1);
+}
+
+.register-page .container input,
+.register-page .container select {
+  background-color: #eee;
+  border: none;
+  margin: 8px 0;
+  padding: 10px 15px;
+  font-size: 13px;
+  border-radius: 8px;
+  width: 60%;
+  outline: none;
+}
+
+.register-page .container select {
+  cursor: pointer;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #333 50%), 
+    linear-gradient(135deg, #333 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(1em + 1px), calc(100% - 15px) calc(1em + 1px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+
+.register-page .container input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+  cursor: pointer;
+}
+
+.register-page .container input:focus,
+.register-page .container select:focus {
+  background-color: #fff;
+  border: 1px solid #2d8d2f
+}
+
+.register-page .form-container {
+  position: relative;
+  opacity: 1;
+  z-index: 2;
+}
+
+.register-page .toggle-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  border-radius: 150px 0 0 100px;
+  z-index: 1000;
+}
+
+.register-page .toggle {
+  height: 100%;
+  background-size: cover;
+  background-position: left;
+  background-image: url('/static/images/y.png');
+  background-repeat: no-repeat;
+  color: #000000;
+  position: relative;
+  left: -100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.register-page .toggle-panel {
+  position: absolute;
+  width: 58%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 30px;
+  text-align: center;
+  top: 0;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.register-page .toggle-left {
+  transform: translateX(-200%);
+}
+
+.register-page .container.active .toggle-left {
+  transform: translateX(0);
+}
+
+.register-page .toggle-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.register-page .container.active .toggle-right {
+  transform: translateX(200%);
+}
