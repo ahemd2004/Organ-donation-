@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="carousel">
+    <div class="carousel-images">
+        <div class="carousel-image">
+            <img src="{{ url_for('static', filename='images/donation 9.jpg') }}" alt="organ donation"> 
+        </div>
+        <div class="carousel-image">
+            <img src="{{ url_for('static', filename='images/donation 5.jpg') }}" alt="organ donation"> 
+        </div>
+        <div class="carousel-image">
+            <img src="{{ url_for('static', filename='images/donation 10.jpg') }}" alt="organ donation"> 
+        </div>
+       
+    </div>
+   </div>
+
+    <main>
+        <div class="breadcrumb">
+        </div>
+        <h1>Types of Donation</h1>
+
+        <div class="donation-types">
+            <div class="donation-card">
+                <h2>Deceased Donation</h2>
+                <p>Deceased organ, eye, or tissue donation is the process of giving an organ (or a part of an organ),
+                    eye, or tissue at the time of the donor’s death, for the purpose of transplantation to another
+                    person. At the end of your life, you can give life to others.</p>
+            </div>
+
+            <div class="donation-card">
+                <h2>Living Donation</h2>
+                <p>Living donation offers another choice for transplant candidates, and it saves two lives: the recipient
+                    and the next one on the deceased organ waiting list. Even better, kidney and liver patients who are
+                    able to receive a living donor transplant can receive the best quality organ much sooner, often in
+                    less than a year.</p>
+            </div>
+
+            <div class="donation-card">
+                <h2>Pediatric Donation</h2>
+                <p>Pediatric transplants differ slightly from other organ donations — as organ size is critical to a
+                    successful transplant, children often respond better to child-sized organs. There are currently
+                    2,000 children under the age of 18 waiting for a variety of organs, and nearly 25% of them are under
+                    5 years old.</p>
+            </div>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='home.js') }}"></script>
+    {% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+{% endblock %}
+
+{% block content %}
+<div id="profileInfo">
+    <div class="container">
+       
+        <div class="nav">
+            <button class="active">Profile</button>
+            <button onclick="location.href='/'">Home</button>
+            <button onclick="location.href='/patient'">Patients</button>
+            <button onclick="location.href='/donor'">Donors</button>
+        </div>
+        <div class="profile-section">
+            <div class="profile-info">
+                <img src="https://th.bing.com/th/id/R.5818fb5f9042afba1ecca102b1a89ff5?rik=cUhw3gWg7jJdVg&pid=ImgRaw&r=0" alt="Profile picture">
+                <h2>{{ user.username }}</h2>
+                <section class="email-sender">
+                    <form id="emailForm">
+                        <textarea id="messageInput" name="message" placeholder="Type your message here" required></textarea>
+                        
+                        <button type="button" id="sendButton">Send Message</button>
+                    </form>
+                </section>
+                
+            </div>
+            <div class="profile-details">
+                <div class="details">
+                    <div>
+                        <p>ID: {{ user.user_id }}</p>
+                    </div>
+                    <div>
+                        <p>Status: {{ user.status }}</p>
+                    </div>
+                </div>
+                <div class="details">
+                    <div>
+                        <p>Email: {{ user.email }}</p>
+                    </div>
+                    <div>
+                        <p>Password: {{ user.password }}</p>
+                    </div>
+                </div>
+                <div class="details">
+                    <div>
+                        <p>Phone: {{ user.telephone }}</p>
+                    </div>
+                    <div>
+                        <p>Date of Birth: {{ user.birthday }}</p>
+                    </div>
+                    <div>
+                        <p>Address: {{ user.country }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="logoutButton">Logout</button>
+    </div>
+    {% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='profile.js') }}"></script>
+{% endblock %}

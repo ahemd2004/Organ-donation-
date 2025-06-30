@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Donor Registration{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='donor.css') }}">
+{% endblock %}
+{% block content %}
+<div class="donor-container">
+    <h2>Donor Registration</h2>
+    <form id="donorForm">
+        <label for="donorName">Full Name:</label>
+        <input type="text" id="donorName" name="donorName" placeholder="Enter your full name" required>
+
+        <label for="donorBloodType">Blood Type:</label>
+        <select name="donorBloodType" id="donorBloodType" required>
+            <option value="" disabled selected>Select your blood type</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select>
+
+        <label for="donorStatus">Status:</label>
+        <select id="donorStatus" name="donorStatus" required>
+            <option value="" disabled selected>Select donor status</option>
+            <option value="active">Alive</option>
+            <option value="inactive">Deceased</option>
+        </select>
+
+        <label for="donorOrgan">Organ:</label>
+        <select name="donorOrgan" id="donorOrgan" required>
+            <option value="" disabled selected>Select the organ</option>
+            <option value="Kidney">Kidney</option>
+            <option value="Heart">Heart</option>
+            <option value="Liver">Liver</option>
+            <option value="Lungs">Lungs</option>
+            <option value="Pancreas">Pancreas</option>
+        </select>
+
+        <button type="button" id="registerDonor">Register</button>
+    </form>
+
+    <p id="Message" class="message" style="display: none;">Donor registration successful!</p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='donor.js') }}"></script>
+{% endblock %}

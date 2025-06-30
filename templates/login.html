@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="login-page"> 
+    <div class="container" id="container">
+        <div class="form-container sign-up"> 
+            <!-- Empty div (might be unnecessary, can be removed) -->
+        </div>
+        <div class="form-container sign-in">
+            <form id="loginForm">
+                <h1>Login</h1>
+                <section>
+                    <div class="containera">
+                        <!-- Any additional content or styles for login form -->
+                    </div>
+                </section>
+                <!-- Match the IDs with the JavaScript code -->
+                <input type="text" id="loginIdentifier" placeholder="Email or Username" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <p>Don't have an account? <a href="{{ url_for('main.register') }}" id="loginLink" style="color: green;">Register here</a></p>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <!-- Empty panel (can be removed if unnecessary) -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>   
+{% endblock %}
+
+{% block scripts %}    
+<script src="{{ url_for('static', filename='login.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='records.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Patient and Donor Records</h1>
+
+<!-- Donor Records Section -->
+<div class="records-container" id="donor-records">
+    <h2>Donor Records</h2>
+    <table id="donorTable">
+        <thead>
+            <div class="button-container">
+                <button type="button" onclick="location.href='/donor' " class="btn-action">Add Donor</button>
+            </div>
+            <tr>
+                <th>Name</th>
+                <th>Blood Type</th>
+                <th>Organ Donated</th>
+                <th>Contact Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for donor in donors %}
+                <tr>
+                    <td>{{ donor.name }}</td>
+                    <td>{{ donor.blood_type }}</td>
+                    <td>{{ donor.organ_donated }}</td>
+                    <td>{{ donor.contact_info }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Patient Records Section -->
+<div class="records-container" id="patient-records">
+    <h2>Patient Records</h2>
+    <table id="patientTable">
+        <thead>
+            <div class="button-container">
+                <button type="button" onclick="location.href='/patient'" class="btn-action">Add Patient</button>
+            </div>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Birthday</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Organ Needed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+                <tr>
+                    <td>{{ patient.name }}</td>
+                    <td>{{ patient.gender }}</td>
+                    <td>{{ patient.birthday }}</td>
+                    <td>{{ patient.email }}</td>
+                    <td>{{ patient.phone }}</td>
+                    <td>{{ patient.address }}</td>
+                    <td>{{ patient.organ_needed }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Button Section for Data Actions -->
+<div class="button-container">
+    <button type="button" id="downloadDonorButton" class="btn-action">Download Donor Data</button>
+    <button type="button" id="downloadPatientButton" class="btn-action">Download Patient Data</button>
+    <button type="button" id="deleteData" class="btn-action">Delete All Data</button>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='records.js') }}"></script>
+{% endblock %}

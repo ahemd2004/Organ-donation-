@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="register-page"> 
+    <div class="container"> 
+        <!-- Sign Up Form Container -->
+        <div class="form-container sign-up">
+            <h1>Sign Up</h1>
+            <form id="registerForm" method="POST" action="{{ url_for('main.register') }}">
+                <input type="text" id="signupUsername" name="username" placeholder="Username" required>
+                <input type="email" id="signupEmail" name="email" placeholder="Email" required>
+                <input type="text" id="signupTelephone" name="telephone" placeholder="Telephone" required>
+                <input type="text" id="signupCountry" name="country" placeholder="Country" required>
+                <input type="date" id="signupBirthday" name="birthday" placeholder="Birthday" required>
+                <select id="signupStatus" name="status" required>
+                    <option value="" disabled selected>Select Status</option>
+                    <option value="donor">Donor</option>
+                    <option value="patient">Patient</option>
+                </select>
+                <input type="password" id="signupPassword" name="password" placeholder="Password" required> <br>
+                <button type="submit">Sign Up</button>
+            </form>
+            
+            <p>Already have an account? <a href="{{ url_for('main.login') }}" id="loginLink" style="color: green;">Login here</a></p>
+        </div>
+
+        <!-- Toggle Button Container -->
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <button class="hidden" id="showSignUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='register.js') }}"></script>
+{% endblock %}
