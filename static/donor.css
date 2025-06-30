@@ -1,0 +1,98 @@
+/* Donor registration page specific styles */
+.donor-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(211, 47, 47, 0.1);
+}
+
+.donor-container h2 {
+    text-align: center;
+    color: var(--primary-red);
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#donorForm {
+    background-color: var(--light-red);
+    border: 1px solid  #2d8d2f;
+    padding: 2.5rem;
+}
+
+#donorForm label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dark-red);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+#donorForm input,
+#donorForm select {
+    margin-bottom: 1.5rem;
+    border: 2px solid  #2d8d2f;
+    transition: border-color 0.3s ease;
+    font-size: 1rem;
+}
+
+#donorForm input:focus,
+#donorForm select:focus {
+    border-color: var(--primary-red);
+    box-shadow: 0 0 5px #2d8d2f;
+}
+
+#donorForm select {
+    cursor: pointer;
+    background-color: var(--white);
+}
+
+#donorForm option {
+    padding: 10px;
+}
+
+#registerDonor {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+#registerDonor:hover {
+    background-color: var(--dark-red);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(183, 28, 28, 0.2);
+}
+
+.message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: 500;
+    background-color: var(--light-red);
+    color: var(--primary-red);
+    border: 1px solid var(--primary-red);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .donor-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    #donorForm {
+        padding: 1.5rem;
+    }
+
+    .donor-container h2 {
+        font-size: 1.8rem;
+    }
+}
